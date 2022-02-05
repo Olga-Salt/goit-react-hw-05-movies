@@ -1,18 +1,16 @@
 export default function MovieReviewsPage({ movie }) {
+  const reviews = movie.reviews.results;
+
   return (
     <ul>
-      {movie.reviews.results.map(review => (
+      {reviews.length > 0}
+      {reviews.map(review => (
         <li key={review.id}>
-          {review.content ? (
-            <>
-              <p>Author: {review.author}</p>
-              <p>'{review.content}'</p>
-            </>
-          ) : (
-            'no discription'
-          )}
+          <p>Author: {review.author}</p>
+          <p>'{review.content}'</p>
         </li>
       ))}
+      <p>We don't have any reviews for this movie</p>
     </ul>
   );
 }

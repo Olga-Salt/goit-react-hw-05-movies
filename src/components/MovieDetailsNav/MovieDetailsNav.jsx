@@ -1,9 +1,10 @@
 import { Route } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
+import styles from '../../pages/Pages.module.css';
+
 import MovieCastPage from '../../pages/MovieCastPage';
 import MovieReviewsPage from '../../pages/MovieReviewsPage';
-import styles from '../../pages/Pages.module.css';
 
 export default function MovieDetailsNav({ movie, match }) {
   const { url, path } = match;

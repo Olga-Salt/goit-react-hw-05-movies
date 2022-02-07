@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 import PageHeading from '../components/PageHeading/PageHeading';
 import * as movieApi from '../services/movie-api';
@@ -15,16 +15,7 @@ export default function TrandMoviePage() {
   return (
     <>
       <PageHeading title="Tranding today" />
-
-      {movies && (
-        <ul>
-          {movies.results.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {movies && <MoviesList movies={movies} />}
     </>
   );
 }

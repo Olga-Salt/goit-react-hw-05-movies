@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useParams, useRouteMatch, useHistory } from 'react-router-dom';
+import {
+  useParams,
+  useRouteMatch,
+  useHistory,
+  useLocation,
+} from 'react-router-dom';
 import * as movieApi from '../services/movie-api';
 import MovieDetailsInfo from '../components/MovieDetailsInfo/MovieDetailsInfo';
 
@@ -10,15 +15,20 @@ export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const match = useRouteMatch();
   const hist = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
     movieApi.fetchMovieById(movieId).then(setMovie);
   }, [movieId]);
 
+  const goBack = () => {
+    hist.push(location?.state?.from ?? '/movies');
+  };
+
   return (
     <>
       <div>
-        <button onClick={() => hist.goBack()}>Go Back</button>
+        <button onClick={goBack}>Go Back</button>
       </div>
 
       <MovieDetailsInfo movie={movie} />

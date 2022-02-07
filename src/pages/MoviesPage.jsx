@@ -2,79 +2,70 @@ import { React, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { BsSearch } from 'react-icons/bs';
 import * as movieApi from '../services/movie-api';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Spinner from '../components/Spinner/Spinner';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 export default function MoviesPage() {
-  const [name, setName] = useState('');
   const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const location = useLocation();
   const history = useHistory();
-  const search = history.location.search;
-  const params = new URLSearchParams();
-  const query = new URLSearchParams(search).get('query');
+  const query = new URLSearchParams(location.search).get('query');
 
   useEffect(() => {
     if (query) {
-      movieApi.fetchMovieByQuery(query).then(movies => {
-        setMovies(movies);
-      });
+      const fetchSearch = async () => {
+        setLoading(true);
+
+        await movieApi.fetchMovieByQuery(query).then(movies => {
+          if (movies.results.length === 0) {
+            setLoading(false);
+
+            return toast.warning('There is no such movie', {
+              theme: 'colored',
+            });
+          }
+
+          setMovies(movies);
+          setLoading(false);
+        });
+      };
+      fetchSearch();
     }
   }, [query]);
 
-  const fetchSearch = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
+    let queryValue = e.currentTarget.elements.query.value;
 
-    if (name === '') {
+    if (queryValue === '') {
       return;
     }
 
-    if (name.trim() === '') {
+    if (queryValue.trim() === '') {
       return toast.warning('Enter movie title', {
         theme: 'colored',
       });
     }
 
-    if (name) {
-      params.append('query', name.trim());
-    } else {
-      params.delete('query');
-    }
-    history.push({ search: params.toString() });
-
-    setLoading(true);
-
-    await movieApi.fetchMovieByQuery(name).then(movies => {
-      if (movies.results.length === 0) {
-        setLoading(false);
-
-        return toast.warning('There is no such movie', {
-          theme: 'colored',
-        });
-      }
-
-      setMovies(movies);
-      setLoading(false);
+    history.push({
+      ...location,
+      search: `query=${queryValue.trim()}`,
     });
 
-    reset();
-  };
-
-  const reset = () => {
-    setName('');
+    e.currentTarget.reset();
   };
 
   return (
     <div>
-      <form onSubmit={fetchSearch}>
+      <form onSubmit={handleSubmit}>
         <input
-          onChange={e => setName(e.target.value.toLowerCase())}
           type="text"
-          name="name"
+          name="query"
           autoComplete="off"
           autoFocus
-          value={name}
           placeholder="Search film "
         />
         <button type="submit">
@@ -83,15 +74,7 @@ export default function MoviesPage() {
       </form>
 
       {loading && <Spinner />}
-      {movies && (
-        <ul>
-          {movies.results.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.original_title}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {movies && <MoviesList movies={movies} />}
     </div>
   );
 }

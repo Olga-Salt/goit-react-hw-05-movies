@@ -1,11 +1,14 @@
+import { lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 
+import { ToastContainer } from 'react-toastify';
 import Container from './Container/Container';
 import AppBar from './AppBar/AppBar';
-import TrandMoviePage from '../pages/TrandMoviesPage';
-import MovieDetailsPage from '../pages/MovieDetailsPage';
-import MoviesPage from '../pages/MoviesPage';
+
+const TrandMoviePage = lazy(() => import('../pages/TrandMoviesPage'));
+const MovieDetailsPage = lazy(() => import('../pages/MovieDetailsPage'));
+const MoviesPage = lazy(() => import('../pages/MoviesPage'));
+
 export const App = () => {
   return (
     <>
@@ -13,22 +16,24 @@ export const App = () => {
         <ToastContainer />
         <AppBar />
 
-        <Switch>
-          <Route path="/" exact>
-            <TrandMoviePage />
-          </Route>
+        <Suspense fallback={''}>
+          <Switch>
+            <Route path="/" exact>
+              <TrandMoviePage />
+            </Route>
 
-          <Route path="/movies" exact>
-            <MoviesPage />
-          </Route>
+            <Route path="/movies" exact>
+              <MoviesPage />
+            </Route>
 
-          <Route path="/movies/:movieId">
-            <MovieDetailsPage />
-          </Route>
-          <Route>
-            <Redirect to="/" />
-          </Route>
-        </Switch>
+            <Route path="/movies/:movieId">
+              <MovieDetailsPage />
+            </Route>
+            <Route>
+              <Redirect to="/" />
+            </Route>
+          </Switch>
+        </Suspense>
       </Container>
     </>
   );

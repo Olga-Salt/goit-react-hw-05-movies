@@ -12,10 +12,10 @@ const MoviesPage = lazy(() => import('../pages/MoviesPage'));
 export const App = () => {
   return (
     <>
-      <Container>
-        <ToastContainer />
-        <AppBar />
+      <ToastContainer />
+      <AppBar />
 
+      <Container>
         <Suspense fallback={''}>
           <Switch>
             <Route path="/" exact>

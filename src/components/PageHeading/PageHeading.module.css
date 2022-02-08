@@ -1,0 +1,21 @@
+
+.title {
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  padding: 0.4em;
+  font-weight: 500;
+  font-size: 7vw;
+
+}
+@media (min-width: 768px) {
+  .title {
+    font-size: 6.4vw;
+  }
+}
+@media (min-width: 1000px) {
+  .title {
+    padding: 0.2em;
+  }
+}

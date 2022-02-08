@@ -1,26 +1,45 @@
-const imgUrl = 'https://image.tmdb.org/t/p/w300';
+import { noBackdrop } from '../../helpers/fallback';
+import styles from './MovieDetailsInfo.module.css';
+const imgUrl = 'https://image.tmdb.org/t/p/original';
 
 export default function MovieDetailsInfo({ movie }) {
   return (
-    <>
+    <div className={styles.infoWrap}>
       {movie && (
         <>
-          <img src={`${imgUrl}${movie.poster_path}`} alt={movie.title} />
-          <h2>
+          <div className={styles.imgWrap}>
+            <img
+              className={styles.backDropImg}
+              src={
+                movie.backdrop_path
+                  ? `${imgUrl}${movie.backdrop_path}`
+                  : noBackdrop
+              }
+              alt={movie.title}
+            />
+          </div>
+          <h2 className={styles.movieTitle}>
             {movie.original_title}{' '}
             <span>({movie.release_date.slice(0, 4)})</span>
           </h2>
-          <p>User score: {movie.vote_average * 10} %</p>
+          <p>
+            User score:{' '}
+            <span className={styles.scoreValue}>
+              {movie.vote_average * 10} %
+            </span>
+          </p>
           <p>Overview </p>
-          <p>{movie.overview}</p>
+          <p className={styles.overview}>{movie.overview}</p>
           <p>Genres</p>
-          <ul>
+          <ul className={styles.genresList}>
             {movie.genres.map(genre => (
-              <li key={genre.id}>{genre.name}</li>
+              <li key={genre.id} className={styles.genresItem}>
+                {genre.name}
+              </li>
             ))}
           </ul>
         </>
       )}
-    </>
+    </div>
   );
 }

@@ -5,6 +5,7 @@ import * as movieApi from '../services/movie-api';
 import { useHistory, useLocation } from 'react-router-dom';
 import Spinner from '../components/Spinner/Spinner';
 import MoviesList from 'components/MoviesList/MoviesList';
+import styles from './Pages.module.css';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState(null);
@@ -60,15 +61,16 @@ export default function MoviesPage() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input
+          className={styles.searchInput}
           type="text"
           name="query"
           autoComplete="off"
           autoFocus
           placeholder="Search film "
         />
-        <button type="submit">
+        <button type="submit" className={styles.searchBtn}>
           <BsSearch />
         </button>
       </form>

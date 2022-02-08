@@ -1,13 +1,23 @@
 import { NavLink } from 'react-router-dom';
-
+import styles from './Navigation.module.css';
+import { GiFilmSpool } from 'react-icons/gi';
 export default function Navigation() {
   return (
-    <nav>
-      <NavLink to="/" exact className="" activeClassName="">
+    <nav className={styles.nav}>
+      <NavLink
+        to="/"
+        exact
+        className={styles.navLink}
+        activeClassName={styles.active}
+      >
         Home
       </NavLink>
-
-      <NavLink to="/movies" className="" activeClassName="">
+      <GiFilmSpool />
+      <NavLink
+        to="/movies"
+        className={styles.navLink}
+        activeClassName={styles.active}
+      >
         Movies
       </NavLink>
     </nav>

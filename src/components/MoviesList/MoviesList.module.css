@@ -1,0 +1,45 @@
+.movieList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+     grid-gap: 16px;
+     justify-items: center;
+}
+
+.movieItem{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding: 5px;
+    background-color: #282c34;
+    border-radius: 5px;
+}
+
+.movieItem:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+
+@media (min-width: 440px) {
+  .movieItem {
+     width: 200px;
+  }
+}
+
+.movieTitle{
+    font-family: "Montserrat",sans-serif;
+    font-size: 1em;
+    text-align: center;
+    padding: 8px 0;
+}
+
+.img{
+    border-radius: 5px;
+    width: 250px;
+}
+
+@media (min-width: 440px) {
+  .img {
+     width: 200px;
+  }
+}

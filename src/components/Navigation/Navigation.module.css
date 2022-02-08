@@ -1,0 +1,13 @@
+.navLink {
+    color: #fff;
+}
+
+.active{
+    color: #00ffff;
+}
+
+.nav{
+    width: 100vw;
+    display: flex;
+  justify-content: space-around;
+}

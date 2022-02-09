@@ -1,19 +1,32 @@
 .ditalsNavList{
-    padding-bottom: 6px; 
+    display: flex;
 }
 
-.activeLink {
-    color: #00ffff;
+.ditalsNavItem{
+    margin-right: 10px;
 }
 
 .detailsNavLink{
     font-size: 20px;
     font-weight: 600;
     transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: 3px 16px;
+    background-color: #f50057;
+    box-shadow: 0 0 5px #0c0b0bbd;
+    transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+    transition: background-color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
 }
 
 .detailsNavLink:hover{
     color: #00ffff;
+    background-color: transparent;
+}
+
+.activeLink {
+    color: #00ffff;
+    background-color: transparent;
 }
 
 .form{
@@ -22,6 +35,7 @@
     margin-bottom: 16px;
     padding-top: 10px;
 }
+
 .searchInput{
     margin-right: 10px;
     width: 100%;
@@ -39,6 +53,7 @@
     border-top-right-radius: 4px;
     transition: background-color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
 }
+
 .searchInput:hover{
     background-color: rgba(255, 255, 255, 0.13);
 }
@@ -62,30 +77,38 @@
 }
 
 .ditailsWrap{
-    padding-top: 10px;
+    position: relative;
 }
 
 .ditailsWrap > h3{
     font-family: "Roboto",sans-serif;
     font-weight: 600;
     margin-bottom: 6px;
-    text-align: center;
 }
 
 .goBackBtn{
+    position: absolute;
+    top: 18px;
+    left: 6px;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    border-radius: 4px;
     border-color: transparent;
+    background-color: rgba(255, 255, 255, 0.7);
     box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-    padding: 4px;
-    margin-bottom: 6px;
     transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+    transition: background-color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+
+    border-radius: 3px;
+    padding: 2px 3px;
 }
+
+
 .goBackBtn:hover{
-   background-color: #229494;
+    background-color: #f50057;
+    color: #fff;
 }
 
 .goBackBtn > svg{
@@ -93,6 +116,10 @@
     width: 18px;
     height: 18px;
     color: #282c34;
+    transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+}
+.goBackBtn:hover > svg{
+        color: #fff;
 }
 
 .carouselItem{
@@ -134,4 +161,6 @@ box-shadow: 0px 0px 5px black;
     scrollbar-width: thin;
     box-shadow:  0 0 5px #000;
     text-align: justify;
+    background-color: rgba(255, 255, 255, 0.09);
+    overflow: hidden;
 }

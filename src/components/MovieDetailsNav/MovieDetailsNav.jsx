@@ -12,7 +12,7 @@ export default function MovieDetailsNav({ movie, match }) {
   return (
     <>
       <ul className={styles.ditalsNavList}>
-        <li>
+        <li className={styles.ditalsNavItem}>
           <NavLink
             to={`${url}/cast`}
             className={styles.detailsNavLink}

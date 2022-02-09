@@ -30,14 +30,16 @@ export default function MovieDetailsInfo({ movie }) {
           </p>
           <p>Overview </p>
           <p className={styles.overview}>{movie.overview}</p>
-          <p>Genres</p>
-          <ul className={styles.genresList}>
-            {movie.genres.map(genre => (
-              <li key={genre.id} className={styles.genresItem}>
-                {genre.name}
-              </li>
-            ))}
-          </ul>
+          <div className={styles.genresWrap}>
+            <span>Genres:</span>
+            <ul className={styles.genresList}>
+              {movie.genres.map(genre => (
+                <li key={genre.id} className={styles.genresItem}>
+                  {genre.name}
+                </li>
+              ))}
+            </ul>
+          </div>
         </>
       )}
     </div>

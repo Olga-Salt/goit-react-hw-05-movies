@@ -17,7 +17,9 @@ export default function MovieReviewsPage({ movie }) {
           ))}
         </ul>
       ) : (
-        <p>We don't have any reviews for this movie</p>
+        <p className={styles.reviewText}>
+          We don't have any reviews for this movie
+        </p>
       )}
     </>
   );

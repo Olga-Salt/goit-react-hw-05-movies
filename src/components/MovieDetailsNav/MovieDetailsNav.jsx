@@ -11,19 +11,26 @@ export default function MovieDetailsNav({ movie, match }) {
 
   return (
     <>
-      <ul>
+      <ul className={styles.ditalsNavList}>
         <li>
-          <NavLink to={`${url}/cast`} activeClassName={styles.activeLink}>
+          <NavLink
+            to={`${url}/cast`}
+            className={styles.detailsNavLink}
+            activeClassName={styles.activeLink}
+          >
             Cast
           </NavLink>
         </li>
         <li>
-          <NavLink to={`${url}/reviews`} activeClassName={styles.activeLink}>
+          <NavLink
+            to={`${url}/reviews`}
+            className={styles.detailsNavLink}
+            activeClassName={styles.activeLink}
+          >
             Reviews
           </NavLink>
         </li>
       </ul>
-      <hr />
 
       <Route path={`${path}/cast`}>
         {movie && <MovieCastPage movie={movie} />}

@@ -1,20 +1,47 @@
+import React from 'react';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import styles from './Pages.module.css';
+import { noPoster } from '../helpers/fallback';
 const imgUrl = 'https://image.tmdb.org/t/p/w300';
 
-export default function MovieCastPage({ movie }) {
-  return (
-    <ul>
-      {movie.credits.cast.map(cast => (
-        <li key={cast.cast_id}>
-          {cast.profile_path ? (
-            <img src={` ${imgUrl}${cast.profile_path}`} alt={cast.name} />
-          ) : (
-            'No image'
-          )}
+const handleDragStart = e => e.preventDefault();
 
-          <p>{cast.original_name}</p>
-          <p>{cast.character}</p>
-        </li>
-      ))}
-    </ul>
+export default function MovieCastPage({ movie }) {
+  const items = movie.credits.cast.map(cast => (
+    <div key={cast.cast_id} className={styles.carouselItem}>
+      <img
+        src={cast.profile_path ? ` ${imgUrl}${cast.profile_path}` : noPoster}
+        alt={cast.name}
+        onDragStart={handleDragStart}
+        className={styles.carouselItem__img}
+      />
+      <p className={styles.carouselItem__txt}>{cast.original_name}</p>
+      <p>{cast.character}</p>
+    </div>
+  ));
+
+  const responsive = {
+    0: {
+      items: 3,
+    },
+    512: {
+      items: 5,
+    },
+    1024: {
+      items: 7,
+    },
+  };
+
+  return (
+    <AliceCarousel
+      autoPlay
+      responsive={responsive}
+      infinite
+      disableButtonsControls
+      disableDotsControls
+      mouseTracking
+      items={items}
+    />
   );
 }

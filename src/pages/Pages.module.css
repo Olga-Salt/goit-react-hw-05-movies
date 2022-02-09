@@ -1,5 +1,19 @@
+.ditalsNavList{
+    padding-bottom: 6px; 
+}
+
 .activeLink {
-    color: #1fb1b1;
+    color: #00ffff;
+}
+
+.detailsNavLink{
+    font-size: 20px;
+    font-weight: 600;
+    transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+}
+
+.detailsNavLink:hover{
+    color: #00ffff;
 }
 
 .form{
@@ -44,7 +58,7 @@
 }
 
 .searchBtn > svg:hover{
-   fill: #1fb1b1;
+   fill: #00ffff;
 }
 
 .ditailsWrap{
@@ -55,6 +69,7 @@
     font-family: "Roboto",sans-serif;
     font-weight: 600;
     margin-bottom: 6px;
+    text-align: center;
 }
 
 .goBackBtn{
@@ -70,7 +85,7 @@
     transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
 }
 .goBackBtn:hover{
-   background-color: #1fb1b1;
+   background-color: #229494;
 }
 
 .goBackBtn > svg{
@@ -80,3 +95,43 @@
     color: #282c34;
 }
 
+.carouselItem{
+display: flex;
+flex-direction: column;
+object-fit: contain;
+padding: 10px;
+}
+
+.carouselItem__img{
+border-radius: 4px;
+margin-bottom: 5px;
+box-shadow: 0px 0px 5px black;
+}
+
+.carouselItem__txt{
+    font-family: "Roboto",sans-serif;
+    font-weight: 600;
+}
+
+.author{
+    text-align: center;
+    text-transform: uppercase;
+    padding: 12px;
+}
+
+.authorName{
+    font-family: "Roboto",sans-serif;
+    font-weight: 600;
+    margin-left: 6px;
+}
+
+.reviewText{
+    font-family: "Roboto",sans-serif;
+    font-weight: 500;
+    line-height: 1.25;
+    padding: 12px;
+    border-radius: 14px;
+    scrollbar-width: thin;
+    box-shadow:  0 0 5px #000;
+    text-align: justify;
+}

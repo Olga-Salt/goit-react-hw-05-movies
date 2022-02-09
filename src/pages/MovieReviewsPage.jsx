@@ -1,3 +1,4 @@
+import styles from './Pages.module.css';
 export default function MovieReviewsPage({ movie }) {
   const reviews = movie.reviews.results;
 
@@ -7,8 +8,11 @@ export default function MovieReviewsPage({ movie }) {
         <ul>
           {reviews.map(review => (
             <li key={review.id}>
-              <p>Author: {review.author}</p>
-              <p>"{review.content}"</p>
+              <p className={styles.author}>
+                <b>Author :</b>{' '}
+                <span className={styles.authorName}>{review.author}</span>
+              </p>
+              <p className={styles.reviewText}>"{review.content}"</p>
             </li>
           ))}
         </ul>

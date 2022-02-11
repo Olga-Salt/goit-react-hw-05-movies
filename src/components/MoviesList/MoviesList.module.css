@@ -12,11 +12,14 @@
     padding: 5px;
     background-color: #282c34;
     border-radius: 5px;
+    transition:  all 500ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+
 }
 
 .movieItem:hover{
     background-color: #fff;
     color: #000;
+    transform: scale(1.04);
 }
 
 
@@ -43,3 +46,30 @@
      width: 200px;
   }
 }
+
+.movieContainer{
+    position: relative;
+}
+
+.upBtn {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    z-index: 1;
+    font-weight: 600;
+   
+    text-transform: uppercase;
+    border-radius: 50%;
+    padding: 12px 12px;
+    opacity: 0.7;
+
+    box-shadow: 0 -200px 100px -120px rgb(255, 235, 58) inset;
+    animation: background 3s infinite cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+}
+
+@keyframes background {
+  50% {
+    box-shadow: 0 -200px 100px -100px rgb(39, 238, 252) inset;
+  }
+}
+

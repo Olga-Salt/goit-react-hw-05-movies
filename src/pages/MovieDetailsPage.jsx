@@ -25,12 +25,12 @@ export default function MovieDetailsPage() {
   useEffect(() => {
     movieApi.fetchMovieById(movieId).then(movie => {
       setMovie(movie);
-      setTrailer(movie.videos.results[0].key);
+      setTrailer(movie.videos.results[0]?.key);
     });
   }, [movieId]);
 
   const goBack = () => {
-    hist.push(location?.state?.from ?? '/movies');
+    hist.push(location?.state?.from ?? '/');
   };
 
   return (

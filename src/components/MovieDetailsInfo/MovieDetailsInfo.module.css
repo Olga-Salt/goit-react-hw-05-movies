@@ -21,6 +21,11 @@
     }
 }
 
+    @media (min-width: 1023px) {
+    .imgWrap{ height: 23vw;
+    }
+}
+
 .backDropImg{
     width: 100%; 
     display: block;  
@@ -59,6 +64,21 @@
     scrollbar-width: thin;
     box-shadow:  0 0 5px #000;
     text-align: justify;
+    
+}
+
+@media (min-width: 768px) {
+    .overview {
+    height: 40px;
+    overflow-y: auto;
+    }
+}
+
+@media (min-width: 1023px) {
+    .overview {
+    height: 30px;
+    overflow-y: auto;
+    }
 }
 
 .genresWrap{

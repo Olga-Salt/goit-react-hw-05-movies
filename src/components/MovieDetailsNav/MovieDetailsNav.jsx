@@ -5,16 +5,26 @@ import styles from '../../pages/Pages.module.css';
 
 import MovieCastPage from '../../pages/MovieCastPage';
 import MovieReviewsPage from '../../pages/MovieReviewsPage';
+import { useLocation } from 'react-router-dom';
 
 export default function MovieDetailsNav({ movie, match }) {
   const { url, path } = match;
+  const location = useLocation();
+
+  // let { from } = location.state || { from: { pathname: '/' } };
+  // state: location.state || { from: { pathname: '/' } }, при копировании url в новую вкладку не будет ошибки, что не может прочитать свойство from
 
   return (
     <>
       <ul className={styles.ditalsNavList}>
         <li className={styles.ditalsNavItem}>
           <NavLink
-            to={`${url}/cast`}
+            to={{
+              pathname: `${url}/cast`,
+              state: location.state || {
+                from: location,
+              },
+            }}
             className={styles.detailsNavLink}
             activeClassName={styles.activeLink}
           >
@@ -23,7 +33,10 @@ export default function MovieDetailsNav({ movie, match }) {
         </li>
         <li>
           <NavLink
-            to={`${url}/reviews`}
+            to={{
+              pathname: `${url}/reviews`,
+              state: location.state || { from: location },
+            }}
             className={styles.detailsNavLink}
             activeClassName={styles.activeLink}
           >

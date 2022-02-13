@@ -1,3 +1,4 @@
+
 import Navigation from '../Navigation/Navigation';
 import styles from './AppBar.module.css';
 
@@ -8,3 +9,4 @@ export default function AppBar() {
     </header>
   );
 }
+

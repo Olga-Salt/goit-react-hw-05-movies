@@ -6,7 +6,6 @@ import * as movieApi from '../services/movie-api';
 
 export default function TrandMoviePage() {
   const [movies, setMovies] = useState(null);
-  //   const match = useRouteMatch();
 
   useEffect(() => {
     movieApi.fetchTrandMovie().then(setMovies);

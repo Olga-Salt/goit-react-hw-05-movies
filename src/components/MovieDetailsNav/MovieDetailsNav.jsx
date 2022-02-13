@@ -1,5 +1,6 @@
 import { Route } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import styles from '../../pages/Pages.module.css';
 
@@ -54,3 +55,11 @@ export default function MovieDetailsNav({ movie, match }) {
     </>
   );
 }
+
+MovieDetailsNav.propTypes = {
+  movie: PropTypes.oneOfType([
+    PropTypes.bool.isRequired,
+    PropTypes.object.isRequired,
+  ]),
+  match: PropTypes.object.isRequired,
+};

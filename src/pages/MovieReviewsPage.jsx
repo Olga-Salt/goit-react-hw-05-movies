@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import styles from './Pages.module.css';
 export default function MovieReviewsPage({ movie }) {
   const reviews = movie.reviews.results;
@@ -24,3 +26,7 @@ export default function MovieReviewsPage({ movie }) {
     </>
   );
 }
+
+MovieReviewsPage.propTypes = {
+  movie: PropTypes.object.isRequired,
+};

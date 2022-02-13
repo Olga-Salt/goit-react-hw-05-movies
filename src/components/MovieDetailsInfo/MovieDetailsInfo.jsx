@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { noBackdrop } from '../../helpers/fallback';
 import styles from './MovieDetailsInfo.module.css';
 const imgUrl = 'https://image.tmdb.org/t/p/original';
@@ -45,3 +47,10 @@ export default function MovieDetailsInfo({ movie }) {
     </div>
   );
 }
+
+MovieDetailsInfo.propTypes = {
+  movie: PropTypes.oneOfType([
+    PropTypes.bool.isRequired,
+    PropTypes.object.isRequired,
+  ]),
+};

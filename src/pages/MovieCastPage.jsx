@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import styles from './Pages.module.css';
@@ -45,3 +47,7 @@ export default function MovieCastPage({ movie }) {
     />
   );
 }
+
+MovieCastPage.propTypes = {
+  movie: PropTypes.object.isRequired,
+};

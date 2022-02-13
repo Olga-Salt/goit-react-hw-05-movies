@@ -1,4 +1,7 @@
+import PropTypes from 'prop-types';
+
 import styles from '../../pages/Pages.module.css';
+
 const Trailer = ({ trailer }) => {
   return (
     <a
@@ -13,3 +16,7 @@ const Trailer = ({ trailer }) => {
 };
 
 export default Trailer;
+
+Trailer.propTypes = {
+  trailer: PropTypes.string.isRequired,
+};
